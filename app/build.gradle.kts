@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
+    id ("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -45,5 +47,13 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
 
+    //room
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0")
+    implementation("androidx.room:room-runtime:2.5.0-alpha02")
+    implementation("androidx.room:room-ktx:2.5.0-alpha02")
+    annotationProcessor("androidx.room:room-compiler:2.5.0-alpha02")
 
+    //hilt
+    implementation("com.google.dagger:hilt-android:2.44")
+    annotationProcessor("com.google.dagger:hilt-android-compiler:2.44")
 }
