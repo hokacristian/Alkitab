@@ -1,13 +1,11 @@
 package apps.alquran;
 
-import android.app.Application;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import org.w3c.dom.Entity;
-
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import javax.inject.Inject;
 
@@ -19,19 +17,26 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 public class QuranViewModel extends ViewModel {
     private final QuranDao dao;
     private final LiveData<List<QuranEntity>> entity;
+    private final Executor executor;
 
     @Inject
     public QuranViewModel(QuranDao dao) {
         this.dao = dao;
         this.entity = dao.getQuran();
+        this.executor = Executors.newSingleThreadExecutor();
     }
 
     public LiveData<List<QuranEntity>> getQuranList() {
         return entity;
     }
 
-    public void addAyat(QuranEntity entity) {
-        dao.save(entity);
+    public void addAyat(final QuranEntity entity) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                dao.save(entity);
+            }
+        });
     }
 
     public void getList() {

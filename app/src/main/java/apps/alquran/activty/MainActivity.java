@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import apps.alquran.R;
 import apps.alquran.fragment.BerandaFragment;
+import apps.alquran.fragment.HistoryFragment;
 import apps.alquran.fragment.MenuAlQuranFragment;
 import apps.alquran.utils.Preferences;
 import dagger.hilt.android.AndroidEntryPoint;
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                         selectedFragment.setArguments(bundle);
                     }
                 } else if (item.getItemId() == R.id.history) {
-                    // Handle history navigation
+                    selectedFragment = new HistoryFragment();
                 }
                 if (selectedFragment != null) {
                     fragmentManager.beginTransaction()
