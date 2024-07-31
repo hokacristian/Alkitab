@@ -33,14 +33,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.recyclerView);
+//        recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         viewModel = new ViewModelProvider(this).get(QuranViewModel.class);
 
         ApiService apiService = ApiClient.getApiClient().create(ApiService.class);
         Call<List<Surah>> call = apiService.getAllSurah();
-        call.enqueue(new Callback<List<Surah>>() {
+        /*call.enqueue(new Callback<List<Surah>>() {
             @Override
             public void onResponse(Call<List<Surah>> call, Response<List<Surah>> response) {
                 surahList = response.body();
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     quranEntity.setIsSaved(true);
                     new Thread(() -> viewModel.addAyat(quranEntity)).start();
                     Intent intent = SurahDetailActivity.newIntent(MainActivity.this, Integer.parseInt(surah.getNomor()));
-                    startActivity(intent);
+                    startActivity(intent);Override
                 });
             }
 
@@ -64,6 +64,6 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<List<Surah>> call, Throwable t) {
                 // Handle error
             }
-        });
+        });*/
     }
 }

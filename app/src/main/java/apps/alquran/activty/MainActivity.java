@@ -13,7 +13,9 @@ import apps.alquran.R;
 import apps.alquran.fragment.BerandaFragment;
 import apps.alquran.fragment.MenuAlQuranFragment;
 import apps.alquran.utils.Preferences;
+import dagger.hilt.android.AndroidEntryPoint;
 
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
