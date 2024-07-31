@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
+    id ("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -54,6 +56,4 @@ dependencies {
     //hilt
     implementation("com.google.dagger:hilt-android:2.44")
     annotationProcessor("com.google.dagger:hilt-android-compiler:2.44")
-
-
 }
