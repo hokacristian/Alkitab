@@ -2,7 +2,6 @@ package apps.alquran.api;
 
 import java.util.List;
 
-
 import apps.alquran.data.Ayat;
 import apps.alquran.data.Surah;
 import retrofit2.Call;

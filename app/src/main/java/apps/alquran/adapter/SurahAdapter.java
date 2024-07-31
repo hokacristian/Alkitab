@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -17,16 +18,9 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahViewHol
     private List<Surah> surahList;
     private OnItemClickListener listener;
 
-    public interface OnItemClickListener {
-        void onItemClick(Surah surah);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.listener = listener;
-    }
-
-    public SurahAdapter(List<Surah> surahList) {
+    public SurahAdapter(List<Surah> surahList, OnItemClickListener listener) {
         this.surahList = surahList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -39,15 +33,13 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahViewHol
     @Override
     public void onBindViewHolder(@NonNull SurahViewHolder holder, int position) {
         Surah surah = surahList.get(position);
-        holder.tvNama.setText(surah.getNama());
-        holder.tvArti.setText(surah.getArti());
-        holder.tvAsma.setText(surah.getAsma());
-        holder.tvKeterangan.setText(surah.getKeterangan());
-        holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onItemClick(surah);
-            }
-        });
+        holder.txtNumber.setText(surah.getNomor());
+        holder.txtAyat.setText(surah.getAyat() + " Ayat");
+        holder.txtName.setText(surah.getNama());
+        holder.txtInfo.setText(surah.getArti());  // Update to use getArti()
+        holder.txtAsma.setText(surah.getAsma());
+
+        holder.cardView.setOnClickListener(v -> listener.onItemClick(surah));
     }
 
     @Override
@@ -56,14 +48,21 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.SurahViewHol
     }
 
     public static class SurahViewHolder extends RecyclerView.ViewHolder {
-        TextView tvNama, tvArti, tvAsma, tvKeterangan;
+        TextView txtNumber, txtAyat, txtName, txtInfo, txtAsma;
+        CardView cardView;
 
         public SurahViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvNama = itemView.findViewById(R.id.tvNama);
-            tvArti = itemView.findViewById(R.id.tvArti);
-            tvAsma = itemView.findViewById(R.id.tvAsma);
-            tvKeterangan = itemView.findViewById(R.id.tvKeterangan);
+            txtNumber = itemView.findViewById(R.id.txtNumber);
+            txtAyat = itemView.findViewById(R.id.txtAyat);
+            txtName = itemView.findViewById(R.id.txtName);
+            txtInfo = itemView.findViewById(R.id.txtInfo);
+            txtAsma = itemView.findViewById(R.id.txtAsma);
+            cardView = itemView.findViewById(R.id.cvSurah);
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Surah surah);
     }
 }

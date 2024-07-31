@@ -52,4 +52,45 @@ public class Surah {
     public String getKeterangan() {
         return keterangan;
     }
+
+    // Setters
+    public void setArti(String arti) {
+        this.arti = arti;
+    }
+
+    public void setAsma(String asma) {
+        this.asma = asma;
+    }
+
+    public void setAyat(int ayat) {
+        this.ayat = ayat;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setUrut(String urut) {
+        this.urut = urut;
+    }
+
+    public void setAudio(String audio) {
+        this.audio = audio;
+    }
+
+    public void setNomor(String nomor) {
+        this.nomor = nomor;
+    }
+
+    public void setRukuk(String rukuk) {
+        this.rukuk = rukuk;
+    }
+
+    public void setKeterangan(String keterangan) {
+        this.keterangan = keterangan;
+    }
 }

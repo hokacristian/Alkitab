@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_beranda"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Beranda" />
+    <item
+        android:id="@+id/menu_al_quran"
+        android:icon="@drawable/al_quran"
+        android:title="Al-Qur'an" />
+    <item
+        android:id="@+id/history"
+        android:icon="@drawable/baseline_history_24"
+        android:title="History" />
+
+</menu>
