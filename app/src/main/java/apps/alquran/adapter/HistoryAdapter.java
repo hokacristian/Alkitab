@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -16,10 +17,6 @@ import apps.alquran.room.QuranEntity;
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
 
     private List<QuranEntity> historyList;
-
-//    public HistoryAdapter(List<QuranEntity> historyList) {
-//        this.historyList = historyList;
-//    }
 
     @NonNull
     @Override
@@ -33,6 +30,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         QuranEntity entity = historyList.get(position);
         holder.surahName.setText(entity.getNama());
         holder.surahNumber.setText(String.valueOf(entity.getNomor()));
+        holder.surahAsma.setText(entity.getAsma());
+        holder.surahArti.setText(entity.getArti());
     }
 
     @Override
@@ -46,13 +45,19 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView surahName;
-        public TextView surahNumber;
+        TextView surahName;
+        TextView surahNumber;
+        TextView surahAsma;
+        TextView surahArti;
+        CardView cardView;
 
         public ViewHolder(View view) {
             super(view);
             surahName = view.findViewById(R.id.surahName);
             surahNumber = view.findViewById(R.id.surahNumber);
+            surahAsma = view.findViewById(R.id.surahAsma);
+            surahArti = view.findViewById(R.id.surahArti);
+            cardView = view.findViewById(R.id.cvSurah);
         }
     }
 }

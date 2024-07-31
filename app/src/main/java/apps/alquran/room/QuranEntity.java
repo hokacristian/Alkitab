@@ -19,10 +19,13 @@ public class QuranEntity {
     @ColumnInfo(name = "nomor")
     Integer nomor;
 
+    @ColumnInfo(name = "arti")
+    String arti;
+
     @ColumnInfo(name = "isSaved")
     Boolean isSaved;
 
-    // Getter dan Setter untuk id
+    // Getter and Setter for id
     public Integer getId() {
         return id;
     }
@@ -31,7 +34,7 @@ public class QuranEntity {
         this.id = id;
     }
 
-    // Getter dan Setter untuk nama
+    // Getter and Setter for nama
     public String getNama() {
         return nama;
     }
@@ -40,7 +43,7 @@ public class QuranEntity {
         this.nama = nama;
     }
 
-    // Getter dan Setter untuk asma
+    // Getter and Setter for asma
     public String getAsma() {
         return asma;
     }
@@ -49,7 +52,7 @@ public class QuranEntity {
         this.asma = asma;
     }
 
-    // Getter dan Setter untuk nomor
+    // Getter and Setter for nomor
     public Integer getNomor() {
         return nomor;
     }
@@ -58,7 +61,16 @@ public class QuranEntity {
         this.nomor = nomor;
     }
 
-    // Getter dan Setter untuk isSaved
+    // Getter and Setter for arti
+    public String getArti() {
+        return arti;
+    }
+
+    public void setArti(String arti) {
+        this.arti = arti;
+    }
+
+    // Getter and Setter for isSaved
     public Boolean getIsSaved() {
         return isSaved;
     }

@@ -1,9 +1,12 @@
 package apps.alquran.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -52,6 +55,7 @@ public class BerandaFragment extends Fragment implements SurahAdapter.OnItemClic
         recyclerViewSurah.setLayoutManager(new LinearLayoutManager(getContext()));
 
         SearchView searchView = view.findViewById(R.id.searchView);
+        customizeSearchView(searchView);
 
         viewModel = new ViewModelProvider(this).get(QuranViewModel.class);
 
@@ -88,6 +92,32 @@ public class BerandaFragment extends Fragment implements SurahAdapter.OnItemClic
         return view;
     }
 
+    private void customizeSearchView(SearchView searchView) {
+        int searchPlateId = searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null);
+        View searchPlate = searchView.findViewById(searchPlateId);
+        if (searchPlate != null) {
+            searchPlate.setBackgroundColor(Color.BLACK);
+            int searchTextId = searchPlate.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
+            TextView searchText = searchPlate.findViewById(searchTextId);
+            if (searchText != null) {
+                searchText.setTextColor(Color.WHITE);
+                searchText.setHintTextColor(Color.GRAY);
+            }
+        }
+
+        int searchIconId = searchView.getContext().getResources().getIdentifier("android:id/search_mag_icon", null, null);
+        ImageView searchIcon = searchView.findViewById(searchIconId);
+        if (searchIcon != null) {
+            searchIcon.setColorFilter(Color.WHITE);
+        }
+
+        int closeIconId = searchView.getContext().getResources().getIdentifier("android:id/search_close_btn", null, null);
+        ImageView closeIcon = searchView.findViewById(closeIconId);
+        if (closeIcon != null) {
+            closeIcon.setColorFilter(Color.WHITE);
+        }
+    }
+
     private void filter(String text) {
         filteredSurahList.clear();
         if (text.isEmpty()) {
@@ -114,6 +144,8 @@ public class BerandaFragment extends Fragment implements SurahAdapter.OnItemClic
         quranEntity.setAsma(surah.getAsma());
         quranEntity.setNama(surah.getNama());
         quranEntity.setNomor(Integer.valueOf(surah.getNomor()));
+        quranEntity.setArti(surah.getArti());
+
         quranEntity.setIsSaved(true);
         new Thread(() -> viewModel.addAyat(quranEntity)).start();
 

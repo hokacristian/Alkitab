@@ -46,7 +46,7 @@ public class AyahAdapter extends RecyclerView.Adapter<AyahAdapter.AyahViewHolder
         Ayat ayat = ayahList.get(position);
         holder.txtAyahNumber.setText(ayat.getNomor());
         holder.txtAyahAr.setText(ayat.getAr());
-        holder.txtAyahTr.setText(HtmlUtils.stripHtmlTags(ayat.getTr()));  // Remove HTML tags
+        holder.txtAyahTr.setText(HtmlUtils.stripHtmlTags(ayat.getTr()));
         holder.txtAyahId.setText(ayat.getId());
     }
 
@@ -62,7 +62,7 @@ public class AyahAdapter extends RecyclerView.Adapter<AyahAdapter.AyahViewHolder
             super(itemView);
             txtAyahNumber = itemView.findViewById(R.id.txtAyahNumber);
             txtAyahAr = itemView.findViewById(R.id.txtAyahAr);
-            txtAyahTr = itemView.findViewById(R.id.txtAyahTr);  // Find transliteration TextView
+            txtAyahTr = itemView.findViewById(R.id.txtAyahTr);
             txtAyahId = itemView.findViewById(R.id.txtAyahId);
         }
     }

@@ -70,7 +70,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/linearLayoutInfo"
             android:layout_marginTop="15dp"
-            android:queryHint="Cari Surah" />
+            android:queryHint="Cari Surah"
+            app:theme="@style/CustomSearchView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewSurah"
