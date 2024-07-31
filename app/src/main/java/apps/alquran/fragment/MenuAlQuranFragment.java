@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import apps.alquran.R;
-import apps.alquran.adapter.AyahAdapter;
+import apps.alquran.adapter.AyatAdapter;
 import apps.alquran.api.ApiClient;
 import apps.alquran.api.ApiService;
 import apps.alquran.data.Ayat;
@@ -28,9 +28,9 @@ import retrofit2.Response;
 
 public class MenuAlQuranFragment extends Fragment {
 
-    private RecyclerView recyclerViewAyah;
-    private AyahAdapter ayahAdapter;
-    private List<Ayat> ayahList;
+    private RecyclerView recyclerViewAyat;
+    private AyatAdapter ayatAdapter;
+    private List<Ayat> ayatList;
     private String surahNumber;
     private String surahName;
 
@@ -61,8 +61,8 @@ public class MenuAlQuranFragment extends Fragment {
         TextView txtSurahName = view.findViewById(R.id.surahName);
         txtSurahName.setText(surahName); // Set the surah name
 
-        recyclerViewAyah = view.findViewById(R.id.recyclerViewAyah);
-        recyclerViewAyah.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewAyat = view.findViewById(R.id.recyclerViewAyat);
+        recyclerViewAyat.setLayoutManager(new LinearLayoutManager(getContext()));
 
         ApiService apiService = ApiClient.getApiClient().create(ApiService.class);
         String apiUrl = "https://api.npoint.io/99c279bb173a6e28359c/surat/" + surahNumber;
@@ -70,9 +70,9 @@ public class MenuAlQuranFragment extends Fragment {
         call.enqueue(new Callback<List<Ayat>>() {
             @Override
             public void onResponse(Call<List<Ayat>> call, Response<List<Ayat>> response) {
-                ayahList = response.body();
-                ayahAdapter = new AyahAdapter(ayahList);
-                recyclerViewAyah.setAdapter(ayahAdapter);
+                ayatList = response.body();
+                ayatAdapter = new AyatAdapter(ayatList);
+                recyclerViewAyat.setAdapter(ayatAdapter);
             }
 
             @Override

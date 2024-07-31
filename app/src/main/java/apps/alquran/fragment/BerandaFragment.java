@@ -27,7 +27,6 @@ import apps.alquran.api.ApiService;
 import apps.alquran.data.Surah;
 import apps.alquran.room.QuranEntity;
 import apps.alquran.utils.Preferences;
-import dagger.hilt.android.AndroidEntryPoint;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
