@@ -17,9 +17,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
     private List<QuranEntity> historyList;
 
-    public HistoryAdapter(List<QuranEntity> historyList) {
-        this.historyList = historyList;
-    }
+//    public HistoryAdapter(List<QuranEntity> historyList) {
+//        this.historyList = historyList;
+//    }
 
     @NonNull
     @Override
@@ -37,7 +37,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return historyList.size();
+        return historyList != null ? historyList.size() : 0;
     }
 
     public void setHistoryList(List<QuranEntity> historyList) {
@@ -45,7 +45,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView surahName;
         public TextView surahNumber;
 
